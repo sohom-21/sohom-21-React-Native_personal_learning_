@@ -81,6 +81,7 @@ const App = () => {
             validationSchema={passwordSchema}
             onSubmit={values => {
               generatePassword(Number(values.passwordLength));
+              console.log(Number(values.passwordLength));
             }}>
             {({
               values,
