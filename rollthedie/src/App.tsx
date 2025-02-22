@@ -1,21 +1,39 @@
-import { SafeAreaView, ScrollView, StyleSheet, Text, View, useColorScheme } from 'react-native';
+import {
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  useColorScheme,
+  TouchableOpacity,
+} from 'react-native';
 import React from 'react';
-import Roll from './components/Roll';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
+import Dice from './components/Dice';
 
-const App: React.FC = () => {
+const App: React.FC = (): JSX.Element => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
+
   return (
     <SafeAreaView style={backgroundStyle}>
       <ScrollView>
         <View style={styles.headingAppName}>
           <Text style={styles.HeadingappName}>App</Text>
-          <View>
-            <Roll />
+        </View>
+        <View style={styles.RollContainer}>
+          <Text>Roll</Text>
+          <View style={styles.DieContainer}>
+            <View>
+              <Text>RollDie</Text>
+            </View>
+              <Dice />
+            <TouchableOpacity>
+              <Text>Click to Roll</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>
@@ -26,13 +44,23 @@ const App: React.FC = () => {
 export default App;
 
 const styles = StyleSheet.create({
-  headingAppName:{
-    alignItems:'flex-start',
+  headingAppName: {
+    alignItems: 'flex-start',
     marginHorizontal: 20,
-    marginTop:25,
+    marginTop: 25,
   },
-  HeadingappName:{
+  HeadingappName: {
     fontSize: 32,
     fontWeight: 'bold',
+  },
+  real_Containner: {},
+  RollContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#FFF2f2',
+  },
+  DieContainer: {
+    margin: 12,
   },
 });
