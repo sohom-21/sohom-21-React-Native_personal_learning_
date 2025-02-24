@@ -1,39 +1,19 @@
-import {
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-  useColorScheme,
-  TouchableOpacity,
-} from 'react-native';
+import { SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
-import Dice from './components/Dice';
 
-const App: React.FC = (): JSX.Element => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
+const App = () => {
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <ScrollView>
-        <View style={styles.headingAppName}>
-          <Text style={styles.HeadingappName}>App</Text>
+    <SafeAreaView>
+      <StatusBar barStyle="dark-content" />
+      <ScrollView style={styles.container}>
+        <View style={styles.headingText}>
+          <Text style={styles.HeaderText}>Roll The Die</Text>
         </View>
-        <View style={styles.RollContainer}>
-          <Text>Roll</Text>
-          <View style={styles.DieContainer}>
+        <View style={styles.diceCenterContainer}>
+          <View style={styles.diceContainer}>
             <View>
-              <Text>RollDie</Text>
+              <Text>DICE</Text>
             </View>
-              <Dice />
-            <TouchableOpacity>
-              <Text>Click to Roll</Text>
-            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>
@@ -44,23 +24,29 @@ const App: React.FC = (): JSX.Element => {
 export default App;
 
 const styles = StyleSheet.create({
-  headingAppName: {
-    alignItems: 'flex-start',
-    marginHorizontal: 20,
-    marginTop: 25,
+  container: {
+    margin: 20,
   },
-  HeadingappName: {
-    fontSize: 32,
-    fontWeight: 'bold',
+  headingText: {
+    marginTop: 20,
+    marginBottom: 20,
   },
-  real_Containner: {},
-  RollContainer: {
-    flex: 1,
-    alignItems: 'center',
+  HeaderText: {
+     fontSize: 20,
+     fontWeight: 800,
+  },
+  diceContainer:{
+    marginTop: 20,
+    marginBottom: 20,
+    width: 150,
+    height: 150,
+    borderRadius: 10,
+    backgroundColor: '#f2f2f2',
     justifyContent: 'center',
-    backgroundColor: '#FFF2f2',
+    alignItems: 'center',
   },
-  DieContainer: {
-    margin: 12,
+  diceCenterContainer:{
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
