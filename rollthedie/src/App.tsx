@@ -1,7 +1,26 @@
-import { SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, View } from 'react-native';
-import React from 'react';
+import { ImageSourcePropType, Image, SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import type { PropsWithChildren } from 'react';
+import DiceOne from '../assets/One.png';
+import DiceTwo from '../assets/Two.png';
+import DiceThree from '../assets/Three.png';
+import DiceFour from '../assets/Four.png';
+import DiceFive from '../assets/Five.png';
+import DiceSix from '../assets/Six.png';
 
+type DiceProps = PropsWithChildren<{
+  imageUrl: ImageSourcePropType
+}>
+
+const Dice  = ({imageUrl}:DiceProps) => {
+  return (
+    <View style={styles.diceContainer}>
+      <Image source={imageUrl} style={styles.diceImage} />
+    </View>
+  );
+};
 const App = () => {
+  const [diceImage, setDiceImage] = useState(DiceOne) //TODO
   return (
     <SafeAreaView>
       <StatusBar barStyle="dark-content" />
@@ -12,7 +31,7 @@ const App = () => {
         <View style={styles.diceCenterContainer}>
           <View style={styles.diceContainer}>
             <View>
-              <Text>DICE</Text>
+              <Dice imageUrl={diceImage} />
             </View>
           </View>
         </View>
@@ -44,6 +63,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#f2f2f2',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  diceImage:{
+    width: 300,
+    height: 200,
   },
   diceCenterContainer:{
     justifyContent: 'center',
