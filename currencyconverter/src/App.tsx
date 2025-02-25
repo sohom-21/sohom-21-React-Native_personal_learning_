@@ -28,6 +28,7 @@ const App = (): JSX.Element => {
         text: 'Enter a value to Convert',
         backgroundColor: '#EA7773',
         textColor: '#000000',
+        duration: 3000,
       });
     }
     const inputAmount = parseFloat(inputvalue);
@@ -41,6 +42,7 @@ const App = (): JSX.Element => {
         text: 'Not a valid number to convert',
         backgroundColor: '#EA7773',
         textColor: '#000000',
+        duration: 3000,
       });
     }
   };
