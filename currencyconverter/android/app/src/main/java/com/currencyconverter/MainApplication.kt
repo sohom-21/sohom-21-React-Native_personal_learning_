@@ -1,4 +1,4 @@
-package com.rollthedie
+package com.currencyconverter
 
 import android.app.Application
 import com.facebook.react.PackageList
@@ -11,7 +11,6 @@ import com.facebook.react.defaults.DefaultReactHost.getDefaultReactHost
 import com.facebook.react.defaults.DefaultReactNativeHost
 import com.facebook.react.soloader.OpenSourceMergedSoMapping
 import com.facebook.soloader.SoLoader
-import com.mkuczera.RNReactNativeHapticFeedbackPackage;
 
 class MainApplication : Application(), ReactApplication {
 
@@ -22,7 +21,7 @@ class MainApplication : Application(), ReactApplication {
               // Packages that cannot be autolinked yet can be added manually here, for example:
               // add(MyReactNativePackage())
             }
-            
+
         override fun getJSMainModuleName(): String = "index"
 
         override fun getUseDeveloperSupport(): Boolean = BuildConfig.DEBUG
