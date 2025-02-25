@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import type { JSX } from 'react';
 import {
@@ -14,9 +13,7 @@ import {
 //Constants
 import { currencyByRupee } from './constants';
 import CurrencyButton from './components/CurrencyButton';
-import Snackbar from 'react-native-snackbar';
-
-
+import Toast from 'react-native-toast-message';
 const App = (): JSX.Element => {
   const [inputvalue ,setInputvalue] = useState('');
   const [resultvalue ,setResultvalue] = useState('');
@@ -24,25 +21,21 @@ const App = (): JSX.Element => {
 
   const buttonPressed = (targetValue: Currency)=>{
     if(!inputvalue){
-      return Snackbar.show({
-        text: 'Enter a value to Convert',
-        backgroundColor: '#EA7773',
-        textColor: '#000000',
-        duration: 3000,
+      return Toast.show({
+        type: 'error',
+        text1: 'Enter a value to Convert',
       });
     }
     const inputAmount = parseFloat(inputvalue);
-    if (isNaN(inputAmount)){
+    if (!isNaN(inputAmount)){
       const ConvertedValue = inputAmount * targetValue.Value;
       const result = `${targetValue.symbol} ${ConvertedValue.toFixed(2)}`;
       setResultvalue(result);
       setTargetCurrency(targetValue.name);
     }else{
-      return Snackbar.show({
-        text: 'Not a valid number to convert',
-        backgroundColor: '#EA7773',
-        textColor: '#000000',
-        duration: 3000,
+      return Toast.show({
+        type: 'error',
+        text1: 'Enter a valid value',
       });
     }
   };
@@ -82,6 +75,7 @@ const App = (): JSX.Element => {
           />
         </View>
       </View>
+      <Toast />
     </>
   );
 };
