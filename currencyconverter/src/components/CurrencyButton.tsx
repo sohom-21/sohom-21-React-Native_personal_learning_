@@ -4,9 +4,7 @@ import type { PropsWithChildren } from 'react';
 import type { JSX } from 'react';
 type CurrencyButtonProps = PropsWithChildren<{
          name: string;
-         Value: number;
          flag: string;
-         symbol: string;
 }>;
 
 const CurrencyButton = (props: CurrencyButtonProps): JSX.Element => {
@@ -29,7 +27,6 @@ const styles = StyleSheet.create({
                   marginBottom: 10,
                   width: '100%',
                   alignItems: 'center',
-                  // justifyContent: 'center',
          },
          textStyle:{
                   fontSize: 16,
